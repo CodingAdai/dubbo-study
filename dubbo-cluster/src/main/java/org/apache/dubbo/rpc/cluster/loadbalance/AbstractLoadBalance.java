@@ -26,6 +26,7 @@ import org.apache.dubbo.rpc.cluster.LoadBalance;
 import java.util.List;
 
 /**
+ * 负载均衡（有4中实现，一致性hash、最少活跃、随机、轮询）
  * AbstractLoadBalance
  */
 public abstract class AbstractLoadBalance implements LoadBalance {
@@ -73,6 +74,7 @@ public abstract class AbstractLoadBalance implements LoadBalance {
                 int uptime = (int) (System.currentTimeMillis() - timestamp);
                 int warmup = invoker.getUrl().getParameter(Constants.WARMUP_KEY, Constants.DEFAULT_WARMUP);
                 if (uptime > 0 && uptime < warmup) {
+                    // 根据 up时间 和 预热时间 来计算权重
                     weight = calculateWarmupWeight(uptime, warmup, weight);
                 }
             }

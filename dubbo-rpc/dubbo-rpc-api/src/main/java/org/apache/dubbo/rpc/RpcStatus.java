@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * 维护了 rpc 的统计信息
  * URL statistics. (API, Cached, ThreadSafe)
  *
  * @see org.apache.dubbo.rpc.filter.ActiveLimitFilter
