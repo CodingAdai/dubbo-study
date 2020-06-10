@@ -79,6 +79,7 @@ public class ConsistentHashLoadBalance extends AbstractLoadBalance {
                     byte[] digest = md5(address + i);
                     for (int h = 0; h < 4; h++) {
                         long m = hash(digest, h);
+                        // 构建 节点 hash 环
                         virtualInvokers.put(m, invoker);
                     }
                 }
